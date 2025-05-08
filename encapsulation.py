@@ -1,17 +1,20 @@
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.__age = age
-    def get_age(self):
-        return self.__age
-    def set_age(self, age):
-        if age > 0:
-            self.__age = age
+class Student:
+    def __init__(self, name, grade, password):
+        self.name = name              #PUBLIC
+        self.grade = grade            #PROTECTED
+        self.__password = password    #PRIVATE
+    def display_info(self):
+        print("Name:", self.name)
+        print("Grade:", self.grade)
+        print("Password:", self.__password)
+    def change_password(self, new_password):
+        if len(new_password) >= 6:
+            self.__password = new_password
         else:
-            print("Age must be positive")
-person1 = Person("Alice", 30)
-print(person1.name)
-print(person1.get_age())
-person1.set_age(35)
-print(person1.get_age())
-person1.set_age(-5)
+            print("Password too short")
+student1 = Student("ALice", "A", "secret123")
+print(student1.name)
+print(student1.grade)
+student1.display_info()
+student1.change_password("newpass123")
+student1.display_info()
